@@ -11,7 +11,7 @@ WORKDIR /app
 RUN addgroup -S appgroup && \
     adduser  -S appuser -G appgroup
 # COPY --from=builder /app/node_modules ./node_modules
-# COPY --from=builder /app/src ./src
+COPY --from=builder /app/src ./src
 USER appuser
 EXPOSE 3000
 HEALTHCHECK CMD wget -qO- http://localhost:3000/health
